@@ -32,9 +32,9 @@
     ·
     <a href=#usage>How to use this repo</a>
     ·
-    <a href="https://github.com/vtwoptwo/CPPBasics/issues">Report Bug</a>
+    <a href="https://github.com/vtwoptwo/ie-backend/issues">Report Bug</a>
     ·
-    <a href="https://github.com/vtwoptwo/CPPBasics/issues">Request Feature</a>
+    <a href="https://github.com/vtwoptwo/ie-backend/issues">Request Feature</a>
   </p>
 </div>
 
@@ -71,16 +71,26 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Pending...
+This project is to practice end-to-end development using best practice implementations of early functional as well as unit testing, CI/CD and Dockerization of applicatins. 
+
+I am also making this repo explicity detailed so that 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 ### Built With
-* Python Flask
-* Vue Js
-* Postgres
+
+* [![VueJs][Vue.js]][Vue-url]
+* [![Postgres][Postgres]][Postgres-url]
+* [![Flask][Flask]][Flask-url]
+
+### Tools Used
+
+*[![Postman][Postman]][Postman-url]
+*[![Docker][Docker]][Docker-url]
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -104,7 +114,7 @@ Since this project is pretty simple, you can just run the main.cpp file.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/vtwoptwo/CPPBasics.git
+   git clone https://github.com/vtwoptwo/ie-backend.git
    ```
 
 
@@ -127,8 +137,8 @@ Since this project is pretty simple, you can just run the main.cpp file.
 Play the game in a CLI!
 
 <div align="center">
-  <a href="https://github.com/vtwoptwo/CPPBasics/blob/main/images/TicTacToe_CLI_Demo.JPG">
-    <img src="https://github.com/vtwoptwo/CPPBasics/blob/main/images/Cpp_logo.png">
+  <a href="https://github.com/vtwoptwo/ie-backend/blob/main/images/TicTacToe_CLI_Demo.JPG">
+    <img src="https://github.com/vtwoptwo/ie-backend/blob/main/images/Cpp_logo.png">
   </a>
 
 
@@ -139,7 +149,13 @@ Play the game in a CLI!
 ### Developing the Backend
   
   
-  <p align = "center"> Flask is a web (micro)framework for Python Multiple extensions available to enhance features It makes programming a website much easier than usingplain HTTPServer. Integrated support for unit testing Contains development server and debugger Relies on Jinja templating engine to ease HTML creation </p>
+  <p align = "center"> Flask is a web (micro)framework for Python:
+  
+  <ul>Multiple extensions available to enhance features</ul>
+  <ul>It makes programming a website much easier than usingplain HTTPServer. Integrated support for unit testing</ul>
+  <ul>Contains development server and debugger Relies on Jinja templating engine to ease HTML creation </ul>
+  
+  </p>
   
 ### Connecting the Frontend
 ### Implementing Testing
@@ -151,7 +167,7 @@ Play the game in a CLI!
  
 
 
-See the [open issues](https://github.com/vtwoptwo/CPPBasics/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/vtwoptwo/ie-backend/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -188,16 +204,16 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/vtwoptwo/CPPBasics.svg?style=for-the-badge
-[contributors-url]: https://github.com/vtwoptwo/CPPBasics/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/vtwoptwo/CPPBasics.svg?style=for-the-badge
-[forks-url]: https://github.com/vtwoptwo/CPPBasics/network/members
-[stars-shield]: https://img.shields.io/github/stars/vtwoptwo/CPPBasics.svg?style=for-the-badge
-[stars-url]: https://github.com/vtwoptwo/CPPBasics/stargazers
-[issues-shield]: https://img.shields.io/github/issues/vtwoptwo/CPPBasics.svg?style=for-the-badge
-[issues-url]: https://github.com/vtwoptwo/CPPBasics/issues
-[license-shield]: https://img.shields.io/github/license/vtwoptwo/CPPBasics.svg?style=for-the-badge
-[license-url]: https://github.com/vtwoptwo/CPPBasics/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/vtwoptwo/ie-backend.svg?style=for-the-badge
+[contributors-url]: https://github.com/vtwoptwo/ie-backend/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/vtwoptwo/ie-backend.svg?style=for-the-badge
+[forks-url]: https://github.com/vtwoptwo/ie-backend/network/members
+[stars-shield]: https://img.shields.io/github/stars/vtwoptwo/ie-backend.svg?style=for-the-badge
+[stars-url]: https://github.com/vtwoptwo/ie-backend/stargazers
+[issues-shield]: https://img.shields.io/github/issues/vtwoptwo/ie-backend.svg?style=for-the-badge
+[issues-url]: https://github.com/vtwoptwo/ie-backend/issues
+[license-shield]: https://img.shields.io/github/license/vtwoptwo/ie-backend.svg?style=for-the-badge
+[license-url]: https://github.com/vtwoptwo/ie-backend/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/vera-prohaska-31734b1b5/
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
@@ -218,3 +234,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [JQuery-url]: https://jquery.com 
 [CPP-url]: https://cplusplus.com/
 [C++]: https://img.shields.io/badge/C++-blue
+[Postgres]: https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white
+[Postgres-url]: https://www.postgresql.org/
+[Flask]: https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white
+[Flask-url]: https://flask.palletsprojects.com/en/2.2.x/
+[Postman]: https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white
+[Postman-url]: https://www.postman.com/
+[Docker]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
+[Docker-url]: https://www.docker.com/
