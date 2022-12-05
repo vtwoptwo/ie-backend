@@ -140,6 +140,7 @@ Play the game in a CLI!
   <a href="https://github.com/vtwoptwo/ie-backend/blob/main/images/TicTacToe_CLI_Demo.JPG">
     <img src="https://github.com/vtwoptwo/ie-backend/blob/main/images/Cpp_logo.png">
   </a>
+</div>
 
 
 
