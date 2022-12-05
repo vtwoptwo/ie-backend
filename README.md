@@ -14,8 +14,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/vtwoptwo/CPPBasics">
-    <img src="/images/Cpp_logo.png.jpeg" alt="Logo" width="200" height="200">
+  <a href="https://github.com/vtwoptwo/ie-backend">
+    <img src="INSERT IMAGE" alt="Logo" width="200" height="200">
   </a>
 
 <h3 align="center">Backend</h3>
@@ -136,9 +136,16 @@ Play the game in a CLI!
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Notes
-- [ ] Exercises 
-- [ ] Small Scale Projects
+### Developing the Backend
+  
+  
+  <p align = "center"> Flask is a web (micro)framework for Python Multiple extensions available to enhance features It makes programming a website much easier than usingplain HTTPServer. Integrated support for unit testing Contains development server and debugger Relies on Jinja templating engine to ease HTML creation </p>
+  
+### Connecting the Frontend
+### Implementing Testing
+### Creating Different Pipelines
+### 
+  
 
  
  
