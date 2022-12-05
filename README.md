@@ -22,7 +22,7 @@
 
 
   <p align="center">
-    An end to end process to develop, test, and deploy a small scale application using CI/CD, GitHub Actions, and Docker.  The application is built using two repositories: one for the frontend and one for the backend. 
+    An end to end process to develop, test, and deploy a small scale application using CI/CD, GitHub Actions, and Docker.  The application is built using two repositories: one for the frontend and one for the backend. </p>
     <br />
     <a href="https://github.com/vtwoptwo/ie-frontend"><strong>See the Frontend»</strong></a>
     <br />
