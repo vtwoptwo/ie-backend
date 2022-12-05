@@ -76,9 +76,9 @@ Pending...
 
 
 ### Built With
-* [![C++][C++]][CPP-url]
-
-
+* Python Flask
+* Vue Js
+* Postgres
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
