@@ -149,11 +149,11 @@ Play the game in a CLI!
 ### Developing the Backend
   
   
-  <p align = "center"> Flask is a web (micro)framework for Python:
+  <p align = "left"> Flask is a web (micro)framework for Python:
   
-  <ul>Multiple extensions available to enhance features</ul>
-  <ul>It makes programming a website much easier than usingplain HTTPServer. Integrated support for unit testing</ul>
-  <ul>Contains development server and debugger Relies on Jinja templating engine to ease HTML creation </ul>
+  <li>Multiple extensions available to enhance features</li>
+  <li>It makes programming a website much easier than usingplain HTTPServer. Integrated support for unit testing</li>
+  <li>Contains development server and debugger Relies on Jinja templating engine to ease HTML creation </li>
   
   </p>
   
