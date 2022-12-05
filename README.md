@@ -27,9 +27,9 @@
     <br />
     <br />
     <a href="https://github.com/vtwoptwo/ie-frontend"><strong>See the Frontend»</strong></a>
-    <br />
+    ·
     <a href="#about-the-project"><strong>See the project»</strong></a>
-    <br />
+    ·
     <a href=#usage>How to use this repo</a>
     ·
     <a href="https://github.com/vtwoptwo/CPPBasics/issues">Report Bug</a>
