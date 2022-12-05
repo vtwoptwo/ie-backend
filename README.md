@@ -18,11 +18,11 @@
     <img src="/images/Cpp_logo.png.jpeg" alt="Logo" width="200" height="200">
   </a>
 
-<h3 align="center">Backend/h3>
+<h3 align="center">Backend</h3>
 
 
   <p align="center">
-    An end to end process to develop, test, and deploy a small scale application using CI/CD, GitHub Actions, and Docker.  The application is built using two repositories: one for the frontend and one for the backend. </p>
+    An end to end process to develop, test, and deploy a small scale application using CI/CD, GitHub Actions, and Docker.  The application is built using two repositories: one for the frontend and one for the backend. 
     <br />
     <a href="https://github.com/vtwoptwo/ie-frontend"><strong>See the Frontend»</strong></a>
     <br />
