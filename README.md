@@ -75,6 +75,23 @@ This project is to practice end-to-end development using best practice implement
 
 I am also making this repo explicity detailed so that anyone can follow it from start to finish.
 
+
+<h3> General description </h3>
+<br>
+<br>
+Implement an anonymous web application for managing cooking recipes.
+Single page application.
+<br>
+
+Functional requirements:
+* The user must be able to create, read, update, and delete recipes (CRUD).
+* The user must be able to rate recipes from 1 to 5 stars.
+* The user must be able to mark recipes as Favorite with a checkbox.
+* The user must be able to create and edit recipes in a modal view. 
+* User authentication is not needed.
+
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -168,22 +185,133 @@ Play the game in a CLI!
 ## Roadmap in Steps
 Make sure you have everything downloaded from the [pre-requisites](#prerequisites) before continuing.
 
-### Developing the Backend
+### Set-Up
+
 
 1. Create project repository in Github
   ```sh
   Name: Backend | Access: Public |                         Add .gitignore template: None
    ```
 2. Open VSCode and select "Clone Github Repository"
-
-3. Create a folder called backend
-
-    .venv/scripts/activate6. pip install flask7. Hello world:
-
-
-
+3. Install Virtualenv: 
+  ```sh
+  pip install virtualenv
+  #I had an error for so run this command just in case before starting
+  python -m pip install psycopg2 
+  ```
   
-### Connecting the Frontend
+4. Create new virtualenv:
+  ```sh
+  py –m venv .venv
+  ```
+
+5. Activate new virtual environment
+  ```sh
+  .venv/scripts/activate
+  ```
+
+6. Install Flask 
+  ```sh
+  pip install flask, flask_sqlalchemy, python-dotenv, flask_cors
+  ```  
+
+7. Create the following folder structure: 
+
+  <div align="center">
+    <img src="https://github.com/vtwoptwo/images/backend_structure" width="100" height="120">
+ </div>
+
+### Implementing the Flask API
+
+1. In your PGAdmin right click on databases and create a new database. The following is the table we will create in the dabase using code-first architecture. 
+
+  <table align="center" >
+  <tr>
+    <th>Attribute</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td>String</td>
+    <td>Name of recipe</td>
+  </tr>
+  <tr>
+    <td>Ingredients</td>
+    <td>String</td>
+    <td>Required Ingredients</td>
+  </tr>
+  <tr>
+    <td>Steps</td>
+    <td>String</td>
+    <td>Instructions on creating the recipe</td>
+  </tr>
+  <tr>
+    <td>Rating</td>
+    <td>Int</td>
+    <td>1-5 Star Rating</td>
+  </tr>
+  <tr>
+    <td>Favorite</td>
+    <td>bool</td>
+    <td>Marked as either a favorite or not</td>
+  </tr>
+</table>
+
+<br>
+
+2. In your requirements make sure you have the following requirements set: 
+  ```sh
+  Flask==2.2.2
+Flask-Cors==3.0.10
+Flask-SQLAlchemy==2.5.1
+psycopg2==2.9.3
+python-dotenv==0.21.0
+SQLAlchemy==1.4.41
+pytest
+pytest-cov
+  ```
+```sh
+pip install -r ./requirements.txt
+```
+3. Implementing the "Code-First Approach" with the DB
+
+Creating a table model for our recipe tracker (in models.py)
+```sh
+class Recipe(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(32), nullable=False)
+    ingredients = db.Column(db.String(500), nullable=False)
+    instructions = db.Column(db.String(500), nullable=False)
+    favorite = db.Column(db.Boolean, default=False)
+    rating = db.Column(db.Integer, default=0)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f'{self.name}'
+    
+    def __init__(self, name, ingredients, instructions, favorite, rating):
+        self.name = name
+        self.ingredients = ingredients
+        self.instructions = instructions
+        self.favorite = favorite
+        self.rating = rating
+```
+In the python CLI to test the code/database: 
+```sh 
+from app import app,db,Recipe
+with app.app_context():
+  db.create_all()
+r1 = Recipe(name="Soup", ingredients="veggies,vegeta,water,chicken", instructions=("Boil all ingredients for a few hours"), favorite=True, rating=5) 
+>>> with app.app_context():
+  db.session.add(r1)
+  db.session.commit()
+```
+
+### Frontend
+Implementing vue.js
+
+
 ### Implementing Testing
 ### Creating Different Pipelines
 ### 
