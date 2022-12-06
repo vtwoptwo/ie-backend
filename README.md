@@ -73,7 +73,7 @@
 
 This project is to practice end-to-end development using best practice implementations of early functional as well as unit testing, CI/CD and Dockerization of applicatins. 
 
-I am also making this repo explicity detailed so that 
+I am also making this repo explicity detailed so that anyone can follow it from start to finish.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -87,8 +87,8 @@ I am also making this repo explicity detailed so that
 
 ### Tools Used
 
-*[![Postman][Postman]][Postman-url]
-*[![Docker][Docker]][Docker-url]
+* [![Postman][Postman]][Postman-url]
+* [![Docker][Docker]][Docker-url]
 
 
 
@@ -98,19 +98,39 @@ I am also making this repo explicity detailed so that
 
 <!-- GETTING STARTED -->
 ## Getting Started
+<h3> Make sure you know about the following concepts before starting: </h3>
+
+### RestAPI
+
+
+
+### Flask
+
+<p align="left">Flask is a web (micro)framework for Python:
+  <ul> 
+    <li>Multiple extensions available to enhance features</li>
+    <li>It makes programming a website much easier than usingplain HTTPServer.</li>
+    <li>Integrated support for unit testing</li>
+    <li>Contains development server and debugger</li>
+    <li>Relies on Jinja templating engine to ease HTML creation </li>
+  </ul>
+<p>
+
+### Postgres/PgAdmin
+
+
 
 
 
 ### Prerequisites
+You will need the following software downloaded on your workstation:
 
-Make sure you have a gcc compiler. 
-You can download it here:  [How to Install a C++ Compiler](https://dev.to/gamegods3/how-to-install-gcc-in-windows-10-the-easier-way-422j)
+* [PostgreSQL](https://www.postgresql.org/download/) 
+* [PgAdmin](https://www.youtube.com/watch?v=h4WbPpQQekw)
+* [Postman](https://www.postman.com/downloads/)
 
-If you are working in VSCode, ensure that within your C/C++ Configurations you have the Compiler set to : "Your/path/to/g++.exe"
 
 ### Installation
-Since this project is pretty simple, you can just run the main.cpp file. 
-
 
 1. Clone the repo
    ```sh
@@ -145,21 +165,23 @@ Play the game in a CLI!
 
 
 <!-- ROADMAP -->
-## Roadmap
+## Roadmap in Steps
+Make sure you have everything downloaded from the [pre-requisites](#prerequisites) before continuing.
 
 ### Developing the Backend
-  
-  
-  <p> 
-  <ul> Flask is a web (micro)framework for Python:
-  
-  <li>Multiple extensions available to enhance features</li>
-  <li>It makes programming a website much easier than usingplain HTTPServer.</li>
-  <li> Integrated support for unit testing</li>
-  <li>Contains development server and debugger</li>
-  <li>Relies on Jinja templating engine to ease HTML creation </li>
-  </ul>
-  </p>
+
+1. Create project repository in Github
+  ```sh
+  Name: Backend | Access: Public |                         Add .gitignore template: None
+   ```
+2. Open VSCode and select "Clone Github Repository"
+
+3. Create a folder called backend
+
+    .venv/scripts/activate6. pip install flask7. Hello world:
+
+
+
   
 ### Connecting the Frontend
 ### Implementing Testing
