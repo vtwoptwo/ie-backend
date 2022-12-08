@@ -312,7 +312,11 @@ r1 = Recipe(name="Soup", ingredients="veggies,vegeta,water,chicken", instruction
 Implementing vue.js
 
 
-### Implementing Testing
+### Configuration Management 
+
+create a config.py file
+
+
 ### Creating Different Pipelines
 ### 
   
