@@ -8,7 +8,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:srbija@localhost/
 db = SQLAlchemy(app)
 
 
-with app.context():
+with app.app_context():
     db.create_all()
 
 from backend_api import routes
