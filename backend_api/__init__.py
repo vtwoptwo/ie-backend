@@ -7,19 +7,25 @@ import os
 
 app = Flask(__name__)
 load_dotenv()
-
-if os.getenv('ENV') != 'dev':
-    print("running in production mode")
+# Select environment based on the ENV environment variable
+if os.getenv('ENV') == 'dev':
+    print("Running in development mode")
+    app.config.from_object('config.DevelopmentConfig')
+elif os.getenv('ENV') == 'ghci':
+    print("Running in github mode")
+    app.config.from_object('config.GithubCIConfig')
+else:
+    print("Running in production mode")
     app.config.from_object('config.ProductionConfig')
 
-else:
-    print("running in development mode")
-    app.config.from_object('config.DevelopmentConfig')
-    
 db = SQLAlchemy(app)
+
+from backend_api.models import Recipe
 with app.app_context():
     db.create_all()
 CORS(app)
+from backend_api import routes
+
 
 
 
