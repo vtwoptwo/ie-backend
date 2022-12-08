@@ -2,7 +2,9 @@ from flask import Flask, request
 from backend_api import app, db
 from backend_api.models import Recipe
 
-
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
 
 @app.route('/recipes', methods=['POST'])
 def create_recipe():

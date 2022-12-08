@@ -313,8 +313,20 @@ Implementing vue.js
 
 
 ### Configuration Management 
+1. Config Files
+create a .env
+config.py
+and update __init__.py
 
-create a config.py file
+2. Azure WebApp for backend
+create a web app in azure
+
+inside the webapp go to deployment center>settings>source>GitHub
+select your repo
+select new workflow
+
+go to config
+set the environment variables 
 
 
 ### Creating Different Pipelines
