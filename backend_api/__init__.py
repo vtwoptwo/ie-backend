@@ -15,15 +15,12 @@ if os.getenv('ENV') != 'dev':
 else:
     print("running in development mode")
     app.config.from_object('config.DevelopmentConfig')
-
-from backend_api.models import Recipe
-
+    
 db = SQLAlchemy(app)
 with app.app_context():
     db.create_all()
 CORS(app)
 
-from backend_api import routes
 
 
 

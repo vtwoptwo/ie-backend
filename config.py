@@ -1,23 +1,29 @@
 from dotenv import load_dotenv
 import os
+
 load_dotenv()
 
 class Config(object):
-    SECRET_KEY = 'secret_key'
+    SECRET_KEY = 'this-really-needs-to-be-changed'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-class DevelopmentConfig(Config):
-    SQLALCHEMY_DATABASE_URI ='postgresql://{dbuser}:{dbpass}@{dbhost}/{dbname}'.format(
-        dbuser=os.environ.get('DB_USER'),
-        dbpass=os.environ.get('DB_PASS'),
-        dbhost=os.environ.get('DB_HOST'),
-        dbname=os.environ.get('DB_NAME')
+class ProductionConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'postgresql://{dbuser}:{dbpass}@{dbhost}/{dbname}'.format(
+    dbuser=os.getenv('DBUSER'),
+    dbpass=os.getenv('DBPASS'),
+    dbhost=os.getenv('DBHOST') + ".postgres.database.azure.com",
+    dbname=os.getenv('DBNAME')
     )
 
-class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI ='postgresql://{dbuser}:{dbpass}@{dbhost}/{dbname}'.format(
-        dbuser=os.environ.get('DB_USER'),
-        dbpass=os.environ.get('DB_PASS'),
-        dbhost=os.environ.get('DB_HOST') + ".postgres.database.azure.com",
-        dbname=os.environ.get('DB_NAME')
+class DevelopmentConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'postgresql://{dbuser}:{dbpass}@{dbhost}/{dbname}'.format(
+    dbuser=os.getenv('DBUSER'),
+    dbpass=os.getenv('DBPASS'),
+    dbhost=os.getenv('DBHOST'),
+    dbname=os.getenv('DBNAME')
     )
+    DEBUG = True
+
+class GithubCIConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///test.db'
+    DEBUG = True
