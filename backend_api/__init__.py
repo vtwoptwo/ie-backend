@@ -23,7 +23,10 @@ db = SQLAlchemy(app)
 from backend_api.models import Recipe
 with app.app_context():
     db.create_all()
+
 CORS(app)
+CORS_ORIGIN_ALLOW_ALL = True
+
 from backend_api import routes
 
 
