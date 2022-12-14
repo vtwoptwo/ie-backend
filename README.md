@@ -14,7 +14,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/vtwoptwo/ie-backend">
+  <a>
     <img src="INSERT IMAGE" alt="Logo" width="200" height="200">
   </a>
 
@@ -171,15 +171,25 @@ You will need the following software downloaded on your workstation:
 
 ## Usage
 
-Play the game in a CLI!
+Check out the outcome: 
 
 <div align="center">
-  <a href="https://github.com/vtwoptwo/ie-backend/blob/main/images/TicTacToe_CLI_Demo.JPG">
-    <img src="https://github.com/vtwoptwo/ie-backend/blob/main/images/Cpp_logo.png">
+  <a>
+    <img src="">
   </a>
 </div>
 
+<div align="center">
+  <a>
+    <img src="">
+  </a>
+</div>
 
+<div align="center">
+  <a>
+    <img src="">
+  </a>
+</div>
 
 <!-- ROADMAP -->
 ## Roadmap in Steps
