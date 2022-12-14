@@ -19,13 +19,18 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ENV: ghci
+      DBHOST: x
+      DBUSER: x
+      DBPASS: x
+      DBNAME: x
+
 
     steps:
 
     - name: "Show environment variables"
       run: |
         env
-        
+
 
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -45,6 +50,6 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        python -m pytest 
-        
+        python -m pytest --cov=iebank_api -v
+
     
