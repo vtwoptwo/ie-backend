@@ -1,17 +1,15 @@
 
 from backend_api.models import Recipe
-from backend_api import db, app
-import pytest
+import pytest 
 
 def test_create_recipe(): 
-    recipe = Recipe(name='test', ingredients='test', instructions='test', favorite=False, rating=0)
-    db.session.add(recipe)
-    db.session.commit()
-    assert recipe.id == 1
-    assert recipe.name == 'test'
-    assert recipe.ingredients == 'test'
-    assert recipe.instructions == 'test'
+    recipe = Recipe('soup', 'water', 'boil', False, 4)
+  
+    assert recipe.name == 'soup'
+    assert recipe.ingredients == 'water'
+    assert recipe.instructions == 'boil'
     assert recipe.favorite == False
-    assert recipe.rating == 0
+    assert recipe.rating == 4
+
 
 

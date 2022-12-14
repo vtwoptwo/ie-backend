@@ -12,7 +12,7 @@ def create_recipe():
     new_recipe = Recipe(name=data['name'], ingredients=data['ingredients'], instructions=data['instructions'], favorite=data['favorite'], rating=data['rating'])
     db.session.add(new_recipe)
     db.session.commit()
-    return format_recipe(new_recipe), 201
+    return format_recipe(new_recipe)
 
 @app.route('/skull', methods=['GET'])
 def skull():
