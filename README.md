@@ -68,6 +68,34 @@
 
 
 
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -101,11 +129,14 @@ Functional requirements:
 * [![VueJs][Vue.js]][Vue-url]
 * [![Postgres][Postgres]][Postgres-url]
 * [![Flask][Flask]][Flask-url]
+* ![Bicep](https://img.shields.io/badge/BICEP-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
+
 
 ### Tools Used
 
 * [![Postman][Postman]][Postman-url]
 * [![Docker][Docker]][Docker-url]
+* ![Azure](https://img.shields.io/badge/BICEP-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
 
 
 
@@ -145,13 +176,18 @@ You will need the following software downloaded on your workstation:
 * [PostgreSQL](https://www.postgresql.org/download/) 
 * [PgAdmin](https://www.youtube.com/watch?v=h4WbPpQQekw)
 * [Postman](https://www.postman.com/downloads/)
+* [Node.js](https://nodejs.org/en/download/)
 
 
 ### Installation
 
-1. Clone the repo
+1. Clone the backend repo
    ```sh
    git clone https://github.com/vtwoptwo/ie-backend.git
+   ```
+1. Clone the frontend repo
+   ```sh
+   git clone https://github.com/vtwoptwo/ie-frontend.git
    ```
 
 
@@ -171,25 +207,28 @@ You will need the following software downloaded on your workstation:
 
 ## Usage
 
-Check out the outcome: 
 
 <div align="center">
-  <a>
-    <img src="">
-  </a>
+    <img src="img\homepage.JPG">
+</div>
+<div align="center">
+    <img src="img\recipes.JPG">
 </div>
 
 <div align="center">
-  <a>
-    <img src="">
-  </a>
+    <img src="img\createrecipe.JPG">
 </div>
 
 <div align="center">
-  <a>
-    <img src="">
-  </a>
+    <img src="img\editrecipe.JPG">
 </div>
+
+<div align="center">
+    <img src="img\updaterecipe.JPG">
+</div>
+
+
+
 
 <!-- ROADMAP -->
 ## Roadmap in Steps
@@ -225,11 +264,6 @@ Make sure you have everything downloaded from the [pre-requisites](#prerequisite
   pip install flask, flask_sqlalchemy, python-dotenv, flask_cors
   ```  
 
-7. Create the following folder structure: 
-
-  <div align="center">
-    <img src="https://github.com/vtwoptwo/images/backend_structure" width="100" height="120">
- </div>
 
 ### Implementing the Flask API
 
@@ -317,34 +351,209 @@ r1 = Recipe(name="Soup", ingredients="veggies,vegeta,water,chicken", instruction
   db.session.add(r1)
   db.session.commit()
 ```
+run the backend
+```sh
+py ./run.py
+```
 
 ### Frontend
 Implementing vue.js
 
+1. In your frontend folder run the following: 
+```sh 
+$ npm install -g @vue/cli
+$ vue create frontend
 
-### Configuration Management 
-1. Config Files
-create a .env
-config.py
-and update __init__.py
+#Manually select features (Babel, Router)
+#Version: 2.x
+#History mode for router: yes
+#Config: dedicated config files
+#Save for future projects: No
+```
 
-2. Azure WebApp for backend
-create a web app in azure
+to run the vue application run:
+```sh 
+cd frontend
+npm run serve
+```
+To create a production build, run 
+```sh 
+npm run build
+```
+To quit running it
+```sh
+crtl + c
+```
 
-inside the webapp go to deployment center>settings>source>GitHub
-select your repo
-select new workflow
-
-go to config
-set the environment variables 
 
 
-### Creating Different Pipelines
+
+2. Install the following libraries
 
 
-1. Create different parameter files
+```sh
+npm i axios
+npm install bootstrap@4.6.0 --save
+
+
+```
+
+3. Testing the API by opening up POSTMAN and sending in requests to http://127.0.0.1:5000/recipes
+
+Request = GET
+```sh
+
+{
+    "name": "Tortilla de patata",
+    "ingredients": "potatoes,onions,salt,eggs",
+    "instructions": "if u dont know how to make it google it",
+    "favorite": false,
+    "rating": 4
+}
+```
+
+Request = POST
+```sh
+
+{
+    "name": "Tortilla de patata",
+    "ingredients": "potatoes,onions,salt,eggs",
+    "instructions": "if u dont know how to make it google it",
+    "favorite": True,
+    "rating": 4
+}
+```
+4. Ensure that your index folder has the same routes as your backend_api/routes.py 
+
+```sh
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
+  }, 
+
+  {
+    path: '/skull',
+    name: 'Skull',
+    component: Skull
+  },
+  {
+    path: '/recipes',
+    name: 'AppRecipes',
+    component: AppRecipes
+  }
+]
+```
+
+5. Your main.js initiates the App.vue app: ensure that any extra components frome vue that you use are imported in the main.js file
+
+
+More documentation is available here: 
+
+[ Vue JS Boostrap Components ](https://bootstrap-vue.org/docs/components) 
+
+```sh
+
+import Vue from 'vue'
+import 'bootstrap-vue'
+import App from './App.vue'
+import router from './router'
+import 'bootstrap/dist/css/bootstrap.css'
+import { BootstrapVue } from 'bootstrap-vue'
+import { BFormRating } from 'bootstrap-vue'
+Vue.component('b-form-rating', BFormRating)
+import { IconsPlugin } from 'bootstrap-vue'
+Vue.use(IconsPlugin)
+Vue.use(BootstrapVue)
+
+```
+
+6. Understanding the routing in VUE using CRUD
+
+
+  <table align="center" >
+  <tr>
+  <th>Description</th>
+    <th>GET</th>
+    <th>POST</th>
+    <th>PUT</th>
+    <th>DELETE</th>
+    
+  </tr>
+  <tr>  
+    <td>Functions </td>
+    <td>RESTgetRecipes()</td>
+    <td>RESTcreateRecipe(payload)</td>
+    <td>RESTupdateRecipe(payload, recipeId)</td>
+    <td>RESTdeleteRecipe(id) </td>
+   
+
+  </tr>
+  <tr>
+    <td>Action</td>
+    <td>Reads all recipes </td>
+    <td>Creates new recipes by using a payload variable. These are variables which are mapped to the attribute variables in the database in order to create a new instance.</td>
+    <td>Updates an existing recipe by using the recipe id to identify it and the payload to change specific values. Any values not changed remain the same. </td>
+    <td>Deletes a recipe using the recipe id</td>
+  </tr>
+    <tr>
+    <td>Responses</td>
+    <td>x </td>
+    <td>x</td>
+    <td>x </td>
+    <td>x</td>
+  </tr>
+
+</table>
+
+<br>
+
+7, Understanding the routing between pages or components in the app
+
+  <table align="center" >
+  <tr>
+    <th>Function</th>
+    <th>Description</th>
+
+    
+  </tr>
+  <tr>  
+    <td>gotohome()</td>
+    <td>initForm()</td>
+    <td>gonSubmit(evt)</td>
+    <td>onSubmitUpdate(evt)</td>
+    <td>deleteRecipe(recipe)</td>
+    <td>editRecipe(recipe)</td>
+    </tr>
+     <tr>  
+    <td>Switches back to the Home.vue page</td>
+    <td>Initialized the forms using the HTML Modal Code</td>
+    <td>event tracking of Submit Button to create a Recipe</td>
+    <td>event tracking of Submit Button to edit a Recipe</td>
+    <td>event tracking of Delete Button to delete a Recipe</td>
+    <td>event tracking of Update to initialize update form </td>
+    </tr>
+</table>
+
+
+
+### Implementing CI/CD
+* Workflows stored as yml files 
+* fullly integrated with GitHub
+* Respond to GitHub events
+* Live logs and visualized workflow execution 
+* community powered workflows
+* GitHub hosted or self-hosted runners
+* Built-in secret store
   
+To understand the infrastructure see the following diagram: 
 
+<div align="center">
+    <img src="img\infra.JPG">
+</div>
+
+To seethe infrastructure as code written in Bicep, refer to: [IaC](https://github.com/vtwoptwo/ie-IaC/issues)
  
  
 
