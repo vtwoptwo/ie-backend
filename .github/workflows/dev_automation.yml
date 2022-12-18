@@ -1,4 +1,4 @@
-name: Build and deploy Python app to Azure Web App - vprohaska-assignment-dev-BE
+name: Build, Test & Deploy dev-BE
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
 
       - name: Test with pytest
         run: |
-          m pytest --cov=backend_api -v
+          python3 -m pytest --cov=backend_api -v
       
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
