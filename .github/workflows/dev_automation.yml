@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'Production'
+      name: 'Development'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -63,5 +63,5 @@ jobs:
         id: deploy-to-webapp
         with:
           app-name: 'vprohaska-assignment-dev-BE'
-          slot-name: 'Production'
+          slot-name: 'Development'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F879CCDE5D6544488269DB3DD87BEC3F }}
