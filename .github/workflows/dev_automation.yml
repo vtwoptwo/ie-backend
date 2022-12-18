@@ -28,7 +28,7 @@ jobs:
 
       - name: Test with pytest
         run: |
-          m pytest --cov=iebank_api -v
+          m pytest --cov=backend_api -v
       
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
