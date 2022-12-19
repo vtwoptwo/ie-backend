@@ -13,7 +13,7 @@ class Recipe(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
-        return f'{self.name}'
+        return f'{self.id}'
     
     def __init__(self, name, ingredients, instructions, favorite, rating):
         self.name = name
