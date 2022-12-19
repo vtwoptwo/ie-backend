@@ -1,10 +1,6 @@
-name: Build, Test & Deploy dev-BE
+name: Build, Test & Deploy Conditional with Testing
 
-on:
-  push:
-    branches:
-      - dev
-  workflow_dispatch:
+on: [push, workflow_dispatch]
 
 jobs:
   build:
@@ -47,7 +43,8 @@ jobs:
           . 
           !venv/ 
 
-  deploy:
+  deploy-dev:
+    if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     needs: build
     environment:
@@ -68,3 +65,27 @@ jobs:
           app-name: 'vprohaska-assignment-dev-BE'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F879CCDE5D6544488269DB3DD87BEC3F }}
+  
+  
+  deploy-prod:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2
+        with:
+          name: python-app
+          path: .
+          
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v2
+        id: deploy-to-webapp
+        with:
+          app-name: 'vprohaska-assignment-prod-BE'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_598F12E1526047AEA7C9EED0FD6F07DD }}
