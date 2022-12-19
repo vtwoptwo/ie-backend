@@ -67,4 +67,4 @@ jobs:
         with:
           app-name: 'vprohaska-assignment-dev-BE'
           slot-name: 'Development'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F879CCDE5D6544488269DB3DD87BEC3F }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_598F12E1526047AEA7C9EED0FD6F07DD }}
