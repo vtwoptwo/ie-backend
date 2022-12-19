@@ -1,0 +1,70 @@
+name: Build, Test & Deploy dev-BE
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ENV: ghci
+      DBHOST: bla
+      DBUSER: bla
+      DBPASS: bla
+      DBNAME: bla
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python version
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.10'
+
+    - name: Create and start virtual environment
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Test with pytest
+      run: |
+        python -m pytest --cov=backend_api -v
+        
+    - name: Upload artifact for deployment jobs
+      uses: actions/upload-artifact@v2
+      with:
+        name: python-app
+        path: |
+          . 
+          !venv/ 
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2
+        with:
+          name: python-app
+          path: .
+          
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v2
+        id: deploy-to-webapp
+        with:
+          app-name: 'vprohaska-assignment-dev-BE'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F879CCDE5D6544488269DB3DD87BEC3F }}
