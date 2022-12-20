@@ -14,11 +14,10 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a>
-    <img src="INSERT IMAGE" alt="Logo" width="200" height="200">
+  <a href="https://github.com/vtwoptwo/ie-backend">
+    <img src="img/recipe.png" alt="Logo" width="200" height="200">
   </a>
 
-<h3 align="center">Backend</h3>
 
 
   <p align="center">
@@ -37,34 +36,6 @@
     <a href="https://github.com/vtwoptwo/ie-backend/issues">Request Feature</a>
   </p>
 </div>
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
 
 
 
@@ -150,6 +121,14 @@ Functional requirements:
 
 ### RestAPI
 
+* REST (Representational State Transfer) is a software architectural style that defines a set of constraints to be used for creating web services. 
+
+* A REST API (Application Programming Interface) is a set of rules that defines how two systems can interact over the internet, using the HTTP protocol. 
+
+* A REST API defines a set of functions that a developer can use to send requests and receive responses. The requests and responses are typically in the form of JSON (JavaScript Object Notation) or XML (Extensible Markup Language) messages.
+
+
+
 
 
 ### Flask
@@ -164,7 +143,13 @@ Functional requirements:
   </ul>
 <p>
 
-### Postgres/PgAdmin
+### Postgres / PgAdmin
+The Database: 
+* PGAdmin is a PostgreSQL Management Tool used to interact with the Postgres database sessions, both locally and remote servers as well. You can use PGAdmin to perform any sort of database administration required for a Postgres database.
+* PostgreSQL, also known as Postgres, is a free and open-source relational database management system emphasizing extensibility and SQL compliance. It is designed to handle a range of workloads, from single machines to data warehouses or Web services with many concurrent users. It is the default database for macOS Server, and is also available for Linux, FreeBSD, OpenBSD, and Windows.
+
+
+
 
 
 
@@ -209,22 +194,22 @@ You will need the following software downloaded on your workstation:
 
 
 <div align="center">
-    <img src="img\homepage.JPG">
+    <img style="border-radius:10px;" src="img\homepage.JPG">
 </div>
 <div align="center">
-    <img src="img\recipes.JPG">
-</div>
-
-<div align="center">
-    <img src="img\createrecipe.JPG">
+    <img style="border-radius:10px;" src="img\recipes.JPG">
 </div>
 
 <div align="center">
-    <img src="img\editrecipe.JPG">
+    <img style="border-radius:10px;" src="img\createrecipe.JPG">
 </div>
 
 <div align="center">
-    <img src="img\updaterecipe.JPG">
+    <img style="border-radius:10px;" src="img\editrecipe.JPG">
+</div>
+
+<div align="center">
+    <img style="border-radius:10px;" src="img\updaterecipe.JPG">
 </div>
 
 
@@ -509,8 +494,7 @@ Vue.use(BootstrapVue)
 
 <br>
 
-7, Understanding the routing between pages or components in the app
-
+7. Understanding the routing between pages or components in the app
   <table align="center" >
   <tr>
     <th>Function</th>
@@ -538,7 +522,7 @@ Vue.use(BootstrapVue)
 
 
 
-### Implementing CI/CD
+## Implementing CI/CD
 * Workflows stored as yml files 
 * fullly integrated with GitHub
 * Respond to GitHub events
@@ -550,12 +534,87 @@ Vue.use(BootstrapVue)
 To understand the infrastructure see the following diagram: 
 
 <div align="center">
-    <img src="img\infra.JPG">
+    <img style="border-radius:10px;" src="img\infra.jpg">
 </div>
 
-To seethe infrastructure as code written in Bicep, refer to: [IaC](https://github.com/vtwoptwo/ie-IaC/issues)
+To see the infrastructure as code written in Bicep, refer to: [IaC](https://github.com/vtwoptwo/ie-IaC/issues)
+
+Within the bicep file, in order to launch two webapps at once I implemented the following for loop: 
+```sh
+param names array = [ 'FE', 'BE' ]
+```
+
+```sh
+  module appService 'modules/appModule.bicep' = [  for i in range(0,2): {
+    name: 'appService${names[i]}'
+    params: {
+      location: location
+      appServiceAppName:'${appServiceAppName}${names[i]}'
+      appServicePlanName: appServicePlanName
+      environmentType: environmentType
+      dbhost: dbhost
+      dbuser: dbuser
+      dbpass: dbpass
+      dbname: dbname
+    }
+  }]
+
+ // output using loop
+
+  output appServiceAppHostName array = [ for i in range(0,2): {
+    name: 'appService${names[i]}'
+    value: appService[i].outputs.appServiceAppHostName
+  }]
  
- 
+```
+See the [IaC Repository](https://github.com/vtwoptwo/ie-IaC) for more info.
+
+## 2. GitHub Actions
+
+### Frontend: 
+For the [Frontend Workflow](https://github.com/vtwoptwo/ie-frontend/actions/runs/3734402296/workflow),  I had to figure out a way to push different environment variables to the .env file that vue.js reads automatically. 
+Since both webapps were being deployed as a production slot, the `dev` webapp did not recognize the correct environment file. To fix this I implemented the following code in the yml workflow: 
+
+```sh
+      - name: Create .env for development
+        if: github.ref == 'refs/heads/dev'
+        run: |
+          echo "${{ secrets.ENV_DEV_FILE }}" > .env.production
+      - name: Create .env for production
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "${{ secrets.ENV_PROD_FILE }}" > .env.production
+```
+
+I set the <b>VUE_ENV_ROOT_URL={url of backend}</b> as two separate repository secrets in GitHub and call either file to be the official .env.production file based on which branched was pushed. 
+
+To increase the deployment efficiency, I deployed using release.zip format. 
+<div align="center">
+    <img style="border-radius:10px;" src="img\dev-fe.JPG">
+</div>
+<div align="center">
+    <img style="border-radius:10px;" src="img\prod-fe.JPG">
+</div>
+
+
+### Backend: 
+
+For the [Backend Workflow](https://github.com/vtwoptwo/ie-backend/actions/runs/3727849287/workflow), I implemented a pytest job in the build of the application, and then conditional deployments depending on which branch was pushed. 
+
+The testing was implemented as follows: 
+
+```sh
+    - name: Test with pytest
+      run: |
+        python -m pytest --cov=backend_api -v
+```
+<div align="center">
+    <img style="border-radius:10px;" src="img\dev-be.JPG">
+</div>
+<div align="center">
+    <img style="border-radius:10px;" style="border-radius:10px;" style="border-radius:10px;" src="img\prod-be.JPG">
+</div>
+
 
 
 See the [open issues](https://github.com/vtwoptwo/ie-backend/issues) for a full list of proposed features (and known issues).
