@@ -1,4 +1,4 @@
-# Backend for Account Manager
+# Backend for Recipe Manager
 
 <!-- PROJECT SHIELDS -->
 
